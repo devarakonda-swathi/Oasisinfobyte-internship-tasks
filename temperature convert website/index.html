@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #89f7fe, #66a6ff);
+        color: #333;
+    }
+
+    /* Header */
+    header {
+        background-color: rgba(26, 115, 232, 0.9);
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    header h2 {
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 1.5rem;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* Hero Section */
+    .hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 2rem;
+    }
+
+    .converter-box {
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        padding: 3rem 2.5rem;
+        width: 400px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .converter-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        color: #1a73e8;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    input, select, button {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.6rem 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        outline: none;
+    }
+
+    input:focus, select:focus {
+        border-color: #1a73e8;
+        box-shadow: 0 0 5px rgba(26,115,232,0.4);
+    }
+
+    button {
+        background-color: #1a73e8;
+        color: white;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #1557b0;
+    }
+
+    #result {
+        margin-top: 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #333;
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+    }
+
+    #result.show {
+        opacity: 1;
+    }
+
+    .error {
+        color: red;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 1rem;
+        background-color: rgba(26,115,232,0.9);
+        color: white;
+        font-weight: 500;
+        margin-top: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+        .converter-box {
+            width: 90%;
+            padding: 2rem;
+        }
+
+        header {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h2>TempMaster 🌡️</h2>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="converter-box">
+        <h1>Temperature Converter</h1>
+        <input type="text" id="temperature" placeholder="Enter temperature">
+        <select id="unit">
+            <option value="celsius">Celsius (°C)</option>
+            <option value="fahrenheit">Fahrenheit (°F)</option>
+            <option value="kelvin">Kelvin (K)</option>
+        </select>
+        <button onclick="convertTemperature()">Convert</button>
+        <p id="result"></p>
+        <p class="error" id="error-message"></p>
+    </div>
+</section>
+
+<footer>
+    &copy; 2025 TempMaster. All rights reserved.
+</footer>
+
+<script>
+function convertTemperature() {
+    const tempInput = document.getElementById("temperature").value.trim();
+    const unit = document.getElementById("unit").value;
+    const result = document.getElementById("result");
+    const error = document.getElementById("error-message");
+
+    result.textContent = "";
+    error.textContent = "";
+    result.classList.remove("show");
+
+    if (tempInput === "" || isNaN(tempInput)) {
+        error.textContent = "❌ Please enter a valid number!";
+        return;
+    }
+
+    const temp = parseFloat(tempInput);
+    let converted = [];
+
+    if (unit === "celsius") {
+        converted = [
+            `Fahrenheit: ${(temp * 9/5 + 32).toFixed(2)} °F`,
+            `Kelvin: ${(temp + 273.15).toFixed(2)} K`
+        ];
+    } else if (unit === "fahrenheit") {
+        converted = [
+            `Celsius: ${((temp - 32) * 5/9).toFixed(2)} °C`,
+            `Kelvin: ${(((temp - 32) * 5/9) + 273.15).toFixed(2)} K`
+        ];
+    } else if (unit === "kelvin") {
+        converted = [
+            `Celsius: ${(temp - 273.15).toFixed(2)} °C`,
+            `Fahrenheit: ${((temp - 273.15) * 9/5 + 32).toFixed(2)} °F`
+        ];
+    }
+
+    result.innerHTML = `<strong>Converted Values:</strong><br>${converted.join("<br>")}`;
+    result.classList.add("show");
+}
+
+// Enter key support
+document.getElementById("temperature").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        convertTemperature();
+    }
+});
+</script>
+
+</body>
+</html>

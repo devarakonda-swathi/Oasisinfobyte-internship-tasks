@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - Portfolio</title>
+<style>
+/* GENERAL STYLING */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #cfd9df, #e2ebf0);
+    color: #333;
+}
+
+/* TOP NAVIGATION */
+.top-nav {
+    background-color: #1a1a1a;
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.top-nav nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.top-nav nav ul li {
+    margin: 0 1.2rem;
+}
+.top-nav nav ul li a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 1.05rem;
+}
+.top-nav nav ul li a:hover {
+    color: #ff9f1c;
+}
+
+/* HERO SECTION */
+.home-hero {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    padding: 3rem 3rem;
+    margin: 3rem auto;
+    max-width: 1200px;
+    transition: transform 0.3s ease;
+}
+.home-hero:hover {
+    transform: translateY(-5px);
+}
+
+.hero-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* RIGHT MAIN PROFILE IMAGE */
+.hero-right img {
+    width: 340px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    border: 4px solid #1a73e8;
+}
+
+/* LEFT INFO */
+.hero-left {
+    flex: 1;
+    min-width: 280px;
+}
+.hero-left h1 {
+    font-size: 2.7rem;
+    margin-bottom: 0.5rem;
+    color: #1a73e8;
+}
+.hero-left h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    font-weight: 500;
+}
+.hero-left ul {
+    list-style-type: none;
+    padding: 0;
+}
+.hero-left ul li {
+    background: #f5f9ff;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem;
+    border-left: 5px solid #1a73e8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-size: 1.05rem;
+}
+
+/* HIRE ME BUTTON */
+.btn {
+    display: inline-block;
+    background-color: #1a73e8;
+    color: white;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1.2rem;
+    transition: 0.3s;
+}
+.btn:hover {
+    background-color: #1557b0;
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+    background: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: 3rem;
+    border-top: 3px solid #1a73e8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-right img {
+        width: 60%;
+        margin: auto;
+    }
+    .hero-left ul li {
+        text-align: left;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAVIGATION -->
+<div class="top-nav">
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="personal.html">Personal Info</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="experience.html">Experience</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- HERO SECTION -->
+<section class="home-hero">
+    <div class="hero-container">
+        <!-- LEFT TEXT INFO -->
+        <div class="hero-left">
+            <h1>John Doe</h1>
+            <h3>Frontend Developer | UI/UX Enthusiast</h3>
+            <ul>
+                <li>💻 Skilled in HTML, CSS, JavaScript, and React.js</li>
+                <li>🎨 Passionate about designing responsive & modern interfaces</li>
+                <li>⚙️ Experienced in version control (Git & GitHub)</li>
+                <li>🚀 Interested in building creative, user-friendly web apps</li>
+                <li>🤝 Strong communication and team collaboration skills</li>
+            </ul>
+            <a href="contact.html" class="btn">Hire Me</a>
+        </div>
+
+        <!-- RIGHT MAIN IMAGE -->
+        <div class="hero-right">
+            <img src="photo.jpeg" alt="Profile Photo">
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 John Doe | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
